@@ -58,6 +58,7 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
+        """used t del"""
         if obj:
             del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
         else:
