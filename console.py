@@ -74,10 +74,10 @@ class HBNBCommand(cmd.Cmd):
                 if pline:
                     # check for *args or **kwargs
 <<<<<<< HEAD
-                    if pline[0] == '{' and pline[-1] =='}'\
+                    if pline[0] = '{' and pline[-1] ='}'\
                             and type(eval(pline)) is dict:
 =======
-                    if pline[0] == '{' and pline[-1] == '}'\
+                    if pline[0] = '{' and pline[-1] = '}'\
                             and type(eval(pline)) == dict:
 >>>>>>> 9666982e3050e89db8544da311e79a50f22bffe0
                         _args = pline
@@ -127,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        elif class_name not in HBNBCommand.classes:
+        elif args not in HBNBCommand.classes:
 =======
         try:
             if not args:
