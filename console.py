@@ -74,12 +74,15 @@ class HBNBCommand(cmd.Cmd):
                 if pline:
                     # check for *args or **kwargs
 <<<<<<< HEAD
+<<<<<<< HEAD
                     if pline[0] = '{' and pline[-1] ='}'\
                             and type(eval(pline)) is dict:
 =======
                     if pline[0] = '{' and pline[-1] = '}'\
+=======
+                    if pline[0] == '{' and pline[-1] == '}'\
+>>>>>>> 73039532fa5707872673c2ffc04a22b5039c9a93
                             and type(eval(pline)) == dict:
->>>>>>> 9666982e3050e89db8544da311e79a50f22bffe0
                         _args = pline
                     else:
                         _args = pline.replace(',', '')
@@ -119,6 +122,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
+<<<<<<< HEAD
         """ Create an object of any class"""
 <<<<<<< HEAD
         class_name = args.split()[0]
@@ -129,6 +133,9 @@ class HBNBCommand(cmd.Cmd):
             return
         elif args not in HBNBCommand.classes:
 =======
+=======
+        """used to create instance"""
+>>>>>>> 73039532fa5707872673c2ffc04a22b5039c9a93
         try:
             if not args:
                 raise SyntaxError()
@@ -162,7 +169,6 @@ class HBNBCommand(cmd.Cmd):
         except SyntaxError:
             print("** class name missing **")
         except NameError:
->>>>>>> 9666982e3050e89db8544da311e79a50f22bffe0
             print("** class doesn't exist **")
 
     def help_create(self):
