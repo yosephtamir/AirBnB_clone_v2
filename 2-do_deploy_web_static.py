@@ -8,7 +8,7 @@ from os import path
 
 
 env.use_ssh_config = True
-env.hosts = ["web-01", "web-02"]
+env.hosts = ["18.210.20.171", "52.23.244.251"]
 
 
 def do_deploy(archive_path):
