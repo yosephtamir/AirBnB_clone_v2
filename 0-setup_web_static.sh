@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
-sudo apt-get -y update
-sudo apt-get -y install nginx
+#sets up your web servers for the deployment of web_static
 
 mkdir -p /data/
 mkdir -p /data/web_static/
@@ -18,6 +16,25 @@ echo "<html>
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 sudo chown -R ubuntu:ubuntu /data/
 
-sed -i '/server_name _;/a \\n        location \/hbnb_static { \n            alias \/data\/web_static\/current;\n            index index.html index.htm;\n          }\n' /etc/nginx/sites-available/default
+echo "server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	add_header X-Served-By $HOSTNAME;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+
+        error_page 404 /404.html;
+        location /404 {
+            root /etc/nginx/html;
+            internal;
+        }
+
+        location /redirect_me { 
+            return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }
+}
+" >  /etc/nginx/sites-available/default
 
 sudo service nginx restart
