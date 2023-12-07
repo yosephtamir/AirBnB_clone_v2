@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #sets up your web servers for the deployment of web_static
-
 mkdir -p /data/
 mkdir -p /data/web_static/
 mkdir -p /data/web_static/releases/
@@ -22,9 +21,12 @@ echo "server {
 	add_header X-Served-By $HOSTNAME;
 	root /var/www/html;
 	index index.html index.htm index.nginx-debian.html;
-
 	server_name _;
-
+	
+	location /hbnb_static {
+            alias /data/web_static/current;
+            index index.html index.htm;
+        }
         error_page 404 /404.html;
         location /404 {
             root /etc/nginx/html;
@@ -34,6 +36,7 @@ echo "server {
         location /redirect_me { 
             return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
         }
+
 }
 " >  /etc/nginx/sites-available/default
 
