@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-'''A Fabric script to generate .tgz archive'''
+'''a Fabric script that generates a .tgz archive
+from the contents of the web_static folder'''
 
 from fabric.api import local
 from datetime import datetime
@@ -7,11 +8,11 @@ from time import strftime
 
 
 def do_pack():
-   '''generates archive a .tgz archie'''
-
+    '''a Fabric method that generates a .tgz '''
     local("mkdir -p versions")
-    path = ("versions/web_static_{}.tgz".format(datetime.strftime(datetime.now(), "%Y%m%d%H%M%S")))
-    output = local("tar -cvzf {} web_static".format(path))
-    if output.failed:
+    date = datetime.utcnow()
+    path = ("versions/web_static_{}.tgz".format
+            (datetime.strftime(date, "%Y%m%d%H%M%S")))
+    if local("tar -cvzf {} web_static".format(path)).failed:
         return None
-        return path
+    return path
