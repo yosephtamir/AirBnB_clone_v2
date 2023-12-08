@@ -5,13 +5,14 @@ apt install nginx -y
 ufw allow "Nginx HTTP"
 echo "Holberton School for the win! " > /var/www/html/index.html
 
-mkdir -p /data/
-mkdir -p /data/web_static/
-mkdir -p /data/web_static/releases/
-mkdir -p /data/web_static/releases/test/
+mkdir -p /data
+mkdir -p /data/web_static
+mkdir -p /data/web_static/releases
+mkdir -p /data/web_static/shared
+mkdir -p /data/web_static/releases/test
 echo "Holberton School" > /data/web_static/releases/test/index.html
 
-ln -sf /data/web_static/releases/test/ /data/web_static/current
+ln -sf /data/web_static/releases/test /data/web_static/current
 
 sudo chown -R ubuntu:ubuntu /data/
 
