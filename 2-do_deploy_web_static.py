@@ -4,7 +4,6 @@ from datetime import datetime
 from os import path
 """This script is used to deploy a static web to the ff servers"""
 env.hosts = ["18.210.20.171", "52.23.244.251"]
-env.user = "ubuntu"
 
 
 def do_deploy(archive_path):
