@@ -1,31 +1,25 @@
-#!/usr/bin/python3
-"""
-a Fabric script (based on the file 1-pack_web_static.py) that distributes an
-archive to your web servers, using the function do_deploy:
-"""
-from fabric.api import put, run, env
+from fabric.api import *
+from datetime import datetime
 from os import path
-
-
-env.use_ssh_config = True
+"""This script is used to deploy a static web to the ff servers"""
 env.hosts = ["18.210.20.171", "52.23.244.251"]
+env.user = "ubuntu"
 
 
 def do_deploy(archive_path):
-    """
-    a method to deploy to webserver
-    """
+    """a fabric/python method to deploy a webstatic"""
     if path.exists(archive_path):
-        thetar = archive_path.split("/")[-1]
-        serverFolder = "/data/web_static/releases/{}".format(thetar[:-4])
-        run("mkdir -p {}".format(serverFolder))
+        splitPath = archive_path.split("/")[1]
+        splitExt = splitPath.split('.')[0]
+        extractTo = "/data/web_static/releases/{}".format(splitExt)
         put(archive_path, "/tmp/")
-        run("tar -xzf /tmp/{} -C {}".format(thetar, serverFolder))
-        run("rm /tmp/{}".format(thetar))
-        run("mv -f {}/web_static/* {}/".format(serverFolder, serverFolder))
-        run('rm -rf {}/web_static'.format(serverFolder))
+        run("mkdir -p {}".format(extractTo))
+        run("tar -xzf /tmp/{} -C {}".format(splitPath, extractTo))
+        run("rm /tmp/{}".format(splitPath))
+        run("mv {}/web_static/* {}".format(extractTo, extractTo))
+        run("rm -rf {}/web_static".format(extractTo))
         run("rm -rf /data/web_static/current")
-        run("ln -s {} /data/web_static/current".format(serverFolder))
+        run("ln -sf {} /data/web_static/current".format(extractTo))
         return True
     else:
         return False
