@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # used to download and setup nginx
 apt update
-apt install nginx -y
-ufw allow "Nginx HTTP"
+apt install -y nginx
 echo "Holberton School for the win! " > /var/www/html/index.html
 
 mkdir -p /data
