@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""This script is used to deploy a static web to the ff servers"""
 from fabric.api import run, env, put
 from datetime import datetime
 from os import path
-"""This script is used to deploy a static web to the ff servers"""
 env.hosts = ["18.210.20.171", "52.23.244.251"]
 
 
