@@ -19,7 +19,7 @@ def do_deploy(archive_path):
         run("mv {}/web_static/* {}".format(extractTo, extractTo))
         run("rm -rf {}/web_static".format(extractTo))
         run("rm -rf /data/web_static/current")
-        run("ln -sf {} /data/web_static/current".format(extractTo))
+        run("ln -s {} /data/web_static/current".format(extractTo))
         return True
     else:
         return False
