@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from fabric.api import *
+from fabric.api import run, env, put
 from datetime import datetime
 from os import path
 """This script is used to deploy a static web to the ff servers"""
