@@ -16,6 +16,7 @@ def hello():
 
 
 @app.route("/hbnb", strict_slashes=False):
+def hello_hbnb():
     """A child entery to print HBNB"""
     return "HBNB"
 
