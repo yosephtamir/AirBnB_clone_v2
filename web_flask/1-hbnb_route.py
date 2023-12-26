@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This Module is used to serve a web app on host = 0.0.0.0 and port = 5000
-     it serves at the root only
+     it serves the root and hbnb child link
 """
 from flask import Flask
 
@@ -13,6 +13,11 @@ app = Flask(__name__)
 def hello():
     """This is the main entery of the host"""
     return "Hello HBNB!"
+
+
+@app.route("/hbnb", strict_slashes=False):
+    """A child entery to print HBNB"""
+    return "HBNB"
 
 
 if __name__ == "__main__":
