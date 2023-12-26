@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route("/", strict_slashes=False)
 def hello():
     """This is the main entery of the host"""
-    return "Hello HBNB"
+    return "Hello HBNB!"
 
 
 if __name__ == "__main__":
