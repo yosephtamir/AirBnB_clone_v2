@@ -71,7 +71,7 @@ def oddOrEven(n):
 @app.route('/states_list', strict_slashes=False)
 def lists():
     """used to render and display the states list"""
-    states = storage.all(State).values()
+    states = storage.all(State)
     return render_template("7-states_list.html", states=states)
 
 
