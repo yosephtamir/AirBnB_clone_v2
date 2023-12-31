@@ -35,9 +35,11 @@ class Place(BaseModel, Base):
     __tablename__ = "places"
 
     if getenv('HBNB_TYPE_STORAGE') == "db":
-        city_id = Column(String(60), ForeignKey("cities.id"))
-        user_id = Column(String(60), ForeignKey("users.id"))
-        name = Column(String(128))
+        """
+        city_id = Column(String(60), ForeignKey("cities.id"), nullable=False)
+        user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
+        """
+        name = Column(String(128), nullable=False)
         description = Column(String(128))
         number_rooms = Column(Integer, default=0)
         number_bathrooms = Column(Integer, default=0)
@@ -45,6 +47,10 @@ class Place(BaseModel, Base):
         price_by_night = Column(Integer, default=0)
         latitude = Column(Float)
         longitude = Column(Float)
+        """reviews = relationship("Review", backref="place", cascade="delete")
+        amenities = relationship('Amenity', secondary=place_amenity,
+                                 back_populates='place_amenities',
+                                 viewonly=False)"""
         amenity_ids = []
     else:
         city_id = ''
