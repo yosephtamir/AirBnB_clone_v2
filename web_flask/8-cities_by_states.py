@@ -5,7 +5,6 @@ This Module is used to serve a web app on host = 0.0.0.0 and port = 5000
 """
 from models import storage
 from models.state import State
-from models.city import City
 from flask import Flask
 from flask import render_template
 from markupsafe import escape
