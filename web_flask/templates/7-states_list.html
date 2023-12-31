@@ -4,10 +4,11 @@
         <TITLE>HBNB</TITLE>
     </HEAD>
     <BODY>
-	    <H1>States</H1>
-	    <UL>
-		    {% for obj in states.values()|sort(attribute="name") %}
+        <H1>States</H1>
+        <UL>
+			{% for obj in states.values()|sort(attribute="name") %}
 		    <LI> {{ obj.id }}: <B>{{ obj.name }}</B></LI>
-	            {% endfor %}
-	    </UL>
+	        {% endfor %}
+        </UL>
+    </BODY>
 </HTML>
