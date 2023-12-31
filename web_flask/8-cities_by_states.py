@@ -78,15 +78,11 @@ def lists():
 
 @app.route("/cities_by_states", strict_slashes=False)
 def cityByStates():
+    """
+    This is used to show states and cities associated to it
+    """
     states = storage.all(State)
-    cities = storage.all(City)
-    """for state in states.values():
-        print("{}".format(state.name))
-        for city in cities.values():
-            if state.id == city.state_id:
-                print("    ", city.name)"""
-    return render_template("8-cities_by_states.html",
-                           states=states, cities=cities)
+    return render_template("8-cities_by_states.html", states=states)
 
 
 @app.teardown_appcontext
